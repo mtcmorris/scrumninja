@@ -5,57 +5,57 @@ module ScrumNinja
     def initialize(key)
       @api_key = key
     end
-  
+
     def projects(options={})
       response = get 'https://scrumninja.com/projects.xml', options
       response.projects
     end
-    
+
     def project(project_id,options={})
-      response = get "http://scrumninja.com/projects/#{project_id}.xml", options
+      response = get "https://scrumninja.com/projects/#{project_id}.xml", options
       response.project
     end
-    
+
     def project_stories(project_id,options={})
-      response = get "http://scrumninja.com/projects/#{project_id}/stories.xml", options
+      response = get "https://scrumninja.com/projects/#{project_id}/stories.xml", options
       response.stories
     end
-    
+
     def project_backlog(project_id,options={})
-      response = get "http://scrumninja.com/projects/#{project_id}/backlog/index.xml", options
+      response = get "https://scrumninja.com/projects/#{project_id}/backlog/index.xml", options
       response.sprints
     end
-    
+
     def project_sprints(project_id,options={})
-      response = get "http://scrumninja.com/projects/#{project_id}/sprints.xml", options
+      response = get "https://scrumninja.com/projects/#{project_id}/sprints.xml", options
       response.sprints
     end
-    
+
     def project_card_wall(project_id,options={})
-      response = get "http://scrumninja.com/projects/#{project_id}/card_wall.xml", options
+      response = get "https://scrumninja.com/projects/#{project_id}/card_wall.xml", options
       response.tasks
     end
-    
+
     def project_roles(project_id,options={})
-      response = get "http://scrumninja.com/projects/#{project_id}/project_roles.xml", options
+      response = get "https://scrumninja.com/projects/#{project_id}/project_roles.xml", options
       response.project_roles
     end
-    
+
     def project_sprint(project_id,sprint_id,options={})
-      response = get "http://scrumninja.com/projects/#{project_id}/sprints/#{sprint_id}.xml", options
+      response = get "https://scrumninja.com/projects/#{project_id}/sprints/#{sprint_id}.xml", options
       response.sprint
     end
-    
+
     def project_story(project_id,story_id,options={})
-      response = get "http://scrumninja.com/projects/#{project_id}/stories/#{story_id}.xml", options
+      response = get "https://scrumninja.com/projects/#{project_id}/stories/#{story_id}.xml", options
       response.story
     end
-    
+
     def story_tasks(story_id,options={})
-      response = get "http://scrumninja.com/stories/#{story_id}/tasks.xml", options
+      response = get "https://scrumninja.com/stories/#{story_id}/tasks.xml", options
       response.tasks
     end
-    
+
     def project_burndown(project_id,options={})
       burndown = Hashie::Mash.new
       card_wall = project_card_wall project_id, options
@@ -98,15 +98,15 @@ module ScrumNinja
       end
       burndown
     end
-    
+
     private
-    
+
     def connection
       options = {
         :headers => {'Accept' => 'application/xml'},
         :ssl => {:verify => false}
       }
-      
+
       Faraday::Connection.new(options) do |builder|
         builder.use Faraday::Request::Multipart
         builder.use Faraday::Response::Mashify
@@ -114,7 +114,7 @@ module ScrumNinja
         builder.adapter(Faraday.default_adapter)
       end
     end
-    
+
     def get(path,options)
       options.merge!({:api_key => @api_key})
       response = connection.get do |request|

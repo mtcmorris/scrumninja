@@ -32,14 +32,14 @@ end
 # The project method
 describe ScrumNinja, ".project" do
   before do
-    stub_request(:get, "http://scrumninja.com/projects/#{PROJECT_ID}.xml").
+    stub_request(:get, "https://scrumninja.com/projects/#{PROJECT_ID}.xml").
     with(:query => {:api_key => API_KEY}).
     to_return(:body => fixture('project.xml'), :headers => {'Content-Type' => 'application/xml; charset=utf-8'})
   end
 
   it "should request the correct resource" do
     ScrumNinja.project(API_KEY,PROJECT_ID)
-    a_request(:get, "http://scrumninja.com/projects/#{PROJECT_ID}.xml").
+    a_request(:get, "https://scrumninja.com/projects/#{PROJECT_ID}.xml").
     with(:query => {:api_key => API_KEY}).
     should have_been_made
   end
@@ -55,14 +55,14 @@ end
 # The project_stories method
 describe ScrumNinja, ".project_stories" do
   before do
-    stub_request(:get, "http://scrumninja.com/projects/#{PROJECT_ID}/stories.xml").
+    stub_request(:get, "https://scrumninja.com/projects/#{PROJECT_ID}/stories.xml").
     with(:query => {:api_key => API_KEY}).
     to_return(:body => fixture('stories.xml'), :headers => {'Content-Type' => 'application/xml; charset=utf-8'})
   end
 
   it "should request the correct resource" do
     ScrumNinja.project_stories(API_KEY,PROJECT_ID)
-    a_request(:get, "http://scrumninja.com/projects/#{PROJECT_ID}/stories.xml").
+    a_request(:get, "https://scrumninja.com/projects/#{PROJECT_ID}/stories.xml").
     with(:query => {:api_key => API_KEY}).
     should have_been_made
   end
@@ -78,14 +78,14 @@ end
 # The project_backlog method
 describe ScrumNinja, ".project_backlog" do
   before do
-    stub_request(:get, "http://scrumninja.com/projects/#{PROJECT_ID}/backlog/index.xml").
+    stub_request(:get, "https://scrumninja.com/projects/#{PROJECT_ID}/backlog/index.xml").
     with(:query => {:api_key => API_KEY}).
     to_return(:body => fixture('backlog.xml'), :headers => {'Content-Type' => 'application/xml; charset=utf-8'})
   end
 
   it "should request the correct resource" do
     ScrumNinja.project_backlog(API_KEY,PROJECT_ID)
-    a_request(:get, "http://scrumninja.com/projects/#{PROJECT_ID}/backlog/index.xml").
+    a_request(:get, "https://scrumninja.com/projects/#{PROJECT_ID}/backlog/index.xml").
     with(:query => {:api_key => API_KEY}).
     should have_been_made
   end
@@ -101,14 +101,14 @@ end
 # The project_sprints method
 describe ScrumNinja, ".project_sprints" do
   before do
-    stub_request(:get, "http://scrumninja.com/projects/#{PROJECT_ID}/sprints.xml").
+    stub_request(:get, "https://scrumninja.com/projects/#{PROJECT_ID}/sprints.xml").
     with(:query => {:api_key => API_KEY}).
     to_return(:body => fixture('sprints.xml'), :headers => {'Content-Type' => 'application/xml; charset=utf-8'})
   end
 
   it "should request the correct resource" do
     ScrumNinja.project_sprints(API_KEY,PROJECT_ID)
-    a_request(:get, "http://scrumninja.com/projects/#{PROJECT_ID}/sprints.xml").
+    a_request(:get, "https://scrumninja.com/projects/#{PROJECT_ID}/sprints.xml").
     with(:query => {:api_key => API_KEY}).
     should have_been_made
   end
@@ -124,14 +124,14 @@ end
 # The project_card_wall method
 describe ScrumNinja, ".project_card_wall" do
   before do
-    stub_request(:get, "http://scrumninja.com/projects/#{PROJECT_ID}/card_wall.xml").
+    stub_request(:get, "https://scrumninja.com/projects/#{PROJECT_ID}/card_wall.xml").
     with(:query => {:api_key => API_KEY}).
     to_return(:body => fixture('card_wall.xml'), :headers => {'Content-Type' => 'application/xml; charset=utf-8'})
   end
 
   it "should request the correct resource" do
     ScrumNinja.project_card_wall(API_KEY,PROJECT_ID)
-    a_request(:get, "http://scrumninja.com/projects/#{PROJECT_ID}/card_wall.xml").
+    a_request(:get, "https://scrumninja.com/projects/#{PROJECT_ID}/card_wall.xml").
     with(:query => {:api_key => API_KEY}).
     should have_been_made
   end
@@ -147,14 +147,14 @@ end
 # The project_roles method
 describe ScrumNinja, ".project_roles" do
   before do
-    stub_request(:get, "http://scrumninja.com/projects/#{PROJECT_ID}/project_roles.xml").
+    stub_request(:get, "https://scrumninja.com/projects/#{PROJECT_ID}/project_roles.xml").
     with(:query => {:api_key => API_KEY}).
     to_return(:body => fixture('roles.xml'), :headers => {'Content-Type' => 'application/xml; charset=utf-8'})
   end
 
   it "should request the correct resource" do
     ScrumNinja.project_roles(API_KEY,PROJECT_ID)
-    a_request(:get, "http://scrumninja.com/projects/#{PROJECT_ID}/project_roles.xml").
+    a_request(:get, "https://scrumninja.com/projects/#{PROJECT_ID}/project_roles.xml").
     with(:query => {:api_key => API_KEY}).
     should have_been_made
   end
@@ -170,14 +170,14 @@ end
 # The project_sprint method
 describe ScrumNinja, ".project_sprint" do
   before do
-    stub_request(:get, "http://scrumninja.com/projects/#{PROJECT_ID}/sprints/#{SPRINT_ID}.xml").
+    stub_request(:get, "https://scrumninja.com/projects/#{PROJECT_ID}/sprints/#{SPRINT_ID}.xml").
     with(:query => {:api_key => API_KEY}).
     to_return(:body => fixture('sprint.xml'), :headers => {'Content-Type' => 'application/xml; charset=utf-8'})
   end
 
   it "should request the correct resource" do
     ScrumNinja.project_sprint(API_KEY,PROJECT_ID,SPRINT_ID)
-    a_request(:get, "http://scrumninja.com/projects/#{PROJECT_ID}/sprints/#{SPRINT_ID}.xml").
+    a_request(:get, "https://scrumninja.com/projects/#{PROJECT_ID}/sprints/#{SPRINT_ID}.xml").
     with(:query => {:api_key => API_KEY}).
     should have_been_made
   end
@@ -193,14 +193,14 @@ end
 # The project_story method
 describe ScrumNinja, ".project_story" do
   before do
-    stub_request(:get, "http://scrumninja.com/projects/#{PROJECT_ID}/stories/#{STORY_ID}.xml").
+    stub_request(:get, "https://scrumninja.com/projects/#{PROJECT_ID}/stories/#{STORY_ID}.xml").
     with(:query => {:api_key => API_KEY}).
     to_return(:body => fixture('story.xml'), :headers => {'Content-Type' => 'application/xml; charset=utf-8'})
   end
 
   it "should request the correct resource" do
     ScrumNinja.project_story(API_KEY,PROJECT_ID,STORY_ID)
-    a_request(:get, "http://scrumninja.com/projects/#{PROJECT_ID}/stories/#{STORY_ID}.xml").
+    a_request(:get, "https://scrumninja.com/projects/#{PROJECT_ID}/stories/#{STORY_ID}.xml").
     with(:query => {:api_key => API_KEY}).
     should have_been_made
   end
@@ -217,23 +217,23 @@ end
 describe ScrumNinja, ".project_burndown" do
   before do
     # project_burndown uses the cardwall
-    stub_request(:get, "http://scrumninja.com/projects/#{PROJECT_ID}/card_wall.xml").
+    stub_request(:get, "https://scrumninja.com/projects/#{PROJECT_ID}/card_wall.xml").
     with(:query => {:api_key => API_KEY}).
     to_return(:body => fixture('card_wall.xml'), :headers => {'Content-Type' => 'application/xml; charset=utf-8'})
-    
+
     # project_backlog also uses the sprints
-    stub_request(:get, "http://scrumninja.com/projects/#{PROJECT_ID}/sprints.xml").
+    stub_request(:get, "https://scrumninja.com/projects/#{PROJECT_ID}/sprints.xml").
     with(:query => {:api_key => API_KEY}).
     to_return(:body => fixture('sprints.xml'), :headers => {'Content-Type' => 'application/xml; charset=utf-8'})
   end
 
   it "should request the correct resource" do
     ScrumNinja.project_burndown(API_KEY,PROJECT_ID)
-    a_request(:get, "http://scrumninja.com/projects/#{PROJECT_ID}/card_wall.xml").
+    a_request(:get, "https://scrumninja.com/projects/#{PROJECT_ID}/card_wall.xml").
     with(:query => {:api_key => API_KEY}).
     should have_been_made
-    
-    a_request(:get, "http://scrumninja.com/projects/#{PROJECT_ID}/sprints.xml").
+
+    a_request(:get, "https://scrumninja.com/projects/#{PROJECT_ID}/sprints.xml").
     with(:query => {:api_key => API_KEY}).
     should have_been_made
   end
@@ -250,14 +250,14 @@ end
 # The story_tasks method
 describe ScrumNinja, ".story_tasks" do
   before do
-    stub_request(:get, "http://scrumninja.com/stories/#{STORY_ID}/tasks.xml").
+    stub_request(:get, "https://scrumninja.com/stories/#{STORY_ID}/tasks.xml").
     with(:query => {:api_key => API_KEY}).
     to_return(:body => fixture('tasks.xml'), :headers => {'Content-Type' => 'application/xml; charset=utf-8'})
   end
 
   it "should request the correct resource" do
     ScrumNinja.story_tasks(API_KEY,STORY_ID)
-    a_request(:get, "http://scrumninja.com/stories/#{STORY_ID}/tasks.xml").
+    a_request(:get, "https://scrumninja.com/stories/#{STORY_ID}/tasks.xml").
     with(:query => {:api_key => API_KEY}).
     should have_been_made
   end
